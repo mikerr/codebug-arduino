@@ -133,7 +133,7 @@ void codebug_set_row ( int row, int value ) {
 }
 void codebug_display_char (int letter) {
         for (int x=0;x<5;x++) {
-          codebug_set_row(x,font[letter].line[x]
+          codebug_set_row(x,font[letter].line[4-x]
           )
 }
 void loop()
