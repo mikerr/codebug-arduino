@@ -11,6 +11,7 @@ int ROUTINE_SET_BULK =  4;
 
 int CODEBUG_ADDRESS = 24;
 
+//thin 3x5 font
 struct charmatrix { char c;  int d[5]; };
 static charmatrix font[] =
 {
