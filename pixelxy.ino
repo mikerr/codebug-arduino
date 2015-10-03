@@ -25,6 +25,21 @@ void codebug_set_row ( int row, int value ) {
         Wire.write(value);
         error = Wire.endTransmission();
 }
+int codebug_get_row ( int row ) {
+  int error; 
+  int data;
+  
+        Wire.beginTransmission(CODEBUG_ADDRESS);      
+        Wire.write(ROUTINE_GET);
+        Wire.write(row);
+        error = Wire.endTransmission();   
+        
+        Wire.requestFrom(CODEBUG_ADDRESS, 1);
+        while (Wire.available()) { 
+             data = Wire.read(); 
+            }           
+        return (data);
+}
 void codebug_clear (void) {
          for (int y=0;y<5;y++) {
              codebug_set_row(y,0);
@@ -32,9 +47,11 @@ void codebug_clear (void) {
 
 }
 void codebug_set_pixel (int x,int y) {
-        // todo - needs to merge with display - when get_row implemented
-        
-          codebug_set_row(y,1 << (4-x));
+        // needs to merge with display 
+        // so get_row then merge 
+          int oldrowdata = codebug_get_row(y);
+          int newrowdata = 1 << (4-x);
+          codebug_set_row(y,oldrowdata | newrowdata);
      
 }
 void codebug_display_char (int letter) {
@@ -44,6 +61,7 @@ void codebug_display_char (int letter) {
 }
 void loop()
 {
+        codebug_clear();
         for (int x=0;x<5;x++) { 
           for (int y=0;y<5;y++) {
             codebug_clear();
@@ -51,4 +69,3 @@ void loop()
             delay(100);
           }
         }
-}
