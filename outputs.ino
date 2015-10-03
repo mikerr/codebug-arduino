@@ -97,7 +97,7 @@ void setup()
   Wire.begin();  //start i2c
    Serial.begin(115200);   
 
-   codebug_set_io(1,1);
+   codebug_set_io(1,0);
 }
 void loop()
 {
