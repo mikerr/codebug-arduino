@@ -69,14 +69,12 @@ void codebug_set_io (int leg,int direction) {
         
   // io_config_state = leg_index in upper nibble and state in lower nibble
   
-int        value = ((leg << 4) & 0xf0) | (direction & 0x0f);
-        
-
-          int error; 
+        int io_config_state = ((leg << 4) & 0xf0) | (direction & 0x0f);
+        int error; 
         Wire.beginTransmission(CODEBUG_ADDRESS);      
         Wire.write(ROUTINE_SET);
         Wire.write(IO_DIRECTION_CHANNEL);
-        Wire.write(value);
+        Wire.write(io_config_state);
         error = Wire.endTransmission();
 }
 void codebug_clear (void) {
