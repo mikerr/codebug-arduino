@@ -34,7 +34,7 @@ void codebug_set_row ( int row, int value ) {
 }
 
 
-void codebug_set_output (int leg,int output_index) {
+void codebug_set_output (int output_index,int state) {
           
 int error; 
 int output_state;
@@ -49,7 +49,7 @@ int output_state;
              output_state = Wire.read(); 
             }           
 
-        if (output_index != 0) {
+        if (state != 0) {
             output_state |= 1 << output_index;
         }
         else {
