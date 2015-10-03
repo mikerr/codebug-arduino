@@ -1,6 +1,8 @@
 #include <Wire.h> //i2c
 #include "font4x3.h"
 
+// steps through the 4x5 font on the display one character at a time ( 1 per second)
+
 int STATUS_OKAY = 0;
 int STATUS_BUSY = 1;
 
