@@ -1,5 +1,8 @@
 #include <Wire.h> //i2c
 
+// Shows an arrow bitmap on the display
+
+
 int STATUS_OKAY = 0;
 int STATUS_BUSY = 1;
 
